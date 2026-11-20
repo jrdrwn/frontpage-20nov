@@ -9,5 +9,9 @@ import { fileURLToPath } from 'node:url';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
+const entryFile = 'entry.png';
+
+// The output directory is /output inside the grader's container and
+// MAKEFUN_OUTPUT_DIR outside it; mkdir is a no-op when it already exists.
 mkdirSync(outDir, { recursive: true });
-copyFileSync(join(here, 'entry.png'), join(outDir, 'entry.png'));
+copyFileSync(join(here, entryFile), join(outDir, entryFile));
